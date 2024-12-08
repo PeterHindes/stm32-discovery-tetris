@@ -1,0 +1,2 @@
+../Core/Src/pieces.c:38:6:initializeRandomPiece	32	static
+../Core/Src/pieces.c:50:12:piceIndexToColors	16	static

@@ -1,0 +1,2 @@
+../Core/Src/gameBoard.c:10:6:initializeBoard	24	static
+../Core/Src/gameBoard.c:18:6:clearCompletedRows	40	static

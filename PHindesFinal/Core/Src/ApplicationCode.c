@@ -134,36 +134,43 @@ void Draw_Tetris_Block(uint16_t Xpos, uint16_t Ypos, uint16_t size, uint16_t mai
     Draw_BottomLeft_to_TopRight_Triangle_Fill(Xpos + size - shadingThickness, Ypos + shadingThickness - 1, shadingThickness, brightColor);
 }
 
-void Fill_Tetris_Board(uint16_t startX, uint16_t startY, uint16_t blockSize, uint16_t rows, uint16_t cols, uint16_t mainColor, uint16_t brightColor, uint16_t darkColor)
+void Fill_Tetris_Board(Board *board, uint16_t startX, uint16_t startY)
 {
-    for (uint16_t row = 0; row < rows; row++) {
-        for (uint16_t col = 0; col < cols; col++) {
+    for (uint16_t row = 0; row < BOARD_HEIGHT; row++) {
+        for (uint16_t col = 0; col < BOARD_WIDTH; col++) {
             // Calculate the position of the current block
-            uint16_t xPos = startX + col * blockSize + col;
-            uint16_t yPos = startY - row * blockSize + row; // Bottom-up positioning
+            uint16_t xPos = startX + col * BLOCK_SIZE + col;
+            uint16_t yPos = startY - row * BLOCK_SIZE + row; // Bottom-up positioning
 
-            // Draw the Tetris block
-            Draw_Tetris_Block(xPos, yPos, blockSize, mainColor, brightColor, darkColor);
+            // Get the colors for this position
+            int index = board->grid[row][col];
+            if (index != 0){
+				uint16_t * colors = piceIndexToColors(index);
+
+				// Draw the Tetris block
+				Draw_Tetris_Block(xPos, yPos, BLOCK_SIZE, colors[0], colors[1], colors[2]);
+            }
         }
     }
 }
+
 
 void LCD_Visual_Demo(void)
 {
 //	visualDemo();
 	LCD_Clear(0, LCD_COLOR_BLACK);
-//	Draw_Tetris_Block(10, 10, 24, 0xCE60, 0xFFE0, 0x9CC0); // Yellow block with classic shading
-#define TblockSize 14
-#define TROWS 20
-#define TCOLS 10
-//	Fill_Tetris_Board(
-//			LCD_PIXEL_WIDTH /2 - TCOLS*(TblockSize + 1)/2 ,
-//			LCD_PIXEL_HEIGHT - 50  ,
-//			TblockSize,
-//			TROWS,
-//			TCOLS,
-//			0xCE60, 0xFFE0, 0x9CC0
-//			);
+
+	Board board;
+	initializeBoard(& board);
+	board.grid[0][0] = 6;
+	board.grid[0][1] = 2;
+	board.grid[1][0] = 5;
+
+	Fill_Tetris_Board(
+			& board,
+			LCD_PIXEL_WIDTH /2 - BOARD_WIDTH*(BLOCK_SIZE + 1)/2 ,
+			LCD_PIXEL_HEIGHT - 50
+			);
 	Draw_Arrows_On_Screen(-1);
 }
 
@@ -224,14 +231,13 @@ void LCDTouchScreenInterruptGPIOInit(void)
     // Clock enable
     __HAL_RCC_GPIOA_CLK_ENABLE();
 
-    // GPIO Init      
+    // GPIO Init
     HAL_GPIO_Init(GPIOA, &LCDConfig);
 
     // Interrupt Configuration
     HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 	LCDTouchIRQ.Line = EXTI_LINE_15;
-
 }
 
 #define TOUCH_DETECTED_IRQ_STATUS_BIT   (1 << 0)  // Touchscreen detected bitmask
@@ -273,9 +279,6 @@ void EXTI15_10_IRQHandler()
 		/* Touch valid */
 		printf("\nX: %03d\nY: %03d \n", StaticTouchData.x, StaticTouchData.y);
 		LCD_Clear(0, LCD_COLOR_BLACK);
-
-//		LCD_Draw_Circle_Fill(StaticTouchData.x,LCD_PIXEL_HEIGHT-StaticTouchData.y,40,LCD_COLOR_BLACK);
-		LCD_Draw_Rectangle_Fill(StaticTouchData.x,LCD_PIXEL_HEIGHT-StaticTouchData.y,40,40,LCD_COLOR_MAGENTA);
 
 		Draw_Arrows_On_Screen(
 			Determine_Touch_Quadrant(StaticTouchData.x,LCD_PIXEL_HEIGHT-StaticTouchData.y , LCD_PIXEL_WIDTH, LCD_PIXEL_HEIGHT)

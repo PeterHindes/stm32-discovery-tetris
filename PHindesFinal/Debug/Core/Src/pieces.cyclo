@@ -1,0 +1,2 @@
+../Core/Src/pieces.c:38:6:initializeRandomPiece	3
+../Core/Src/pieces.c:50:12:piceIndexToColors	1

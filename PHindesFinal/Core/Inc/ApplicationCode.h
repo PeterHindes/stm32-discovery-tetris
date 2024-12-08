@@ -7,8 +7,8 @@
 
 #include "LCD_Driver.h"
 #include "stm32f4xx_hal.h"
-
 #include <stdio.h>
+#include "gameBoard.h"
 
 #ifndef INC_APPLICATIONCODE_H_
 #define INC_APPLICATIONCODE_H_
