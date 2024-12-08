@@ -57,6 +57,8 @@
 void LTCD__Init(void);
 void LTCD_Layer_Init(uint8_t LayerIndex);
 
+void LCD_Draw_Pixel(uint16_t x, uint16_t y, uint16_t color);
+
 void LCD_DrawChar(uint16_t Xpos, uint16_t Ypos, const uint16_t *c);
 void LCD_DisplayChar(uint16_t Xpos, uint16_t Ypos, uint8_t Ascii);
 void LCD_SetTextColor(uint16_t Color);
@@ -64,8 +66,9 @@ void LCD_SetFont(FONT_t *fonts);
 
 // Draw Shapes Filled
 void LCD_Draw_Circle_Fill(uint16_t Xpos, uint16_t Ypos, uint16_t radius, uint16_t color);
-void LCD_Draw_Rectangle_Fill(uint16_t Xpos, uint16_t Ypos, uint16_t Xlen, uint16_t Ylen, uint16_t color);
-void LCD_Draw_RightAngle_Triangle_Fill(uint16_t Xpos, uint16_t Ypos, uint16_t base, uint16_t height, uint16_t color);
+void LCD_Draw_Rectangle_Fill(uint16_t Xpos, uint16_t Ypos, int16_t Xlen, int16_t Ylen, uint16_t color);
+void Draw_BottomLeft_to_TopRight_Triangle_Fill(uint16_t Xpos, uint16_t Ypos, uint16_t size, uint16_t color);
+void Draw_TopRight_to_BottomLeft_Triangle_Fill(uint16_t Xpos, uint16_t Ypos, uint16_t size, uint16_t color);
 
 // Draw Vertical Line
 void LCD_Draw_Vertical_Line(uint16_t x, uint16_t y, uint16_t len, uint16_t color);

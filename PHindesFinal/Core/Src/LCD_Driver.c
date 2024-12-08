@@ -231,7 +231,7 @@ void LCD_Draw_Circle_Fill(uint16_t Xpos, uint16_t Ypos, uint16_t radius, uint16_
     }
 }
 
-void LCD_Draw_Rectangle_Fill(uint16_t Xpos, uint16_t Ypos, uint16_t Xlen, uint16_t Ylen, uint16_t color)
+void LCD_Draw_Rectangle_Fill(uint16_t Xpos, uint16_t Ypos, int16_t Xlen, int16_t Ylen, uint16_t color)
 {
     for(int16_t y = Ypos; y < Ypos + Ylen; y++)
     {
@@ -242,16 +242,33 @@ void LCD_Draw_Rectangle_Fill(uint16_t Xpos, uint16_t Ypos, uint16_t Xlen, uint16
     }
 }
 
-void LCD_Draw_RightAngle_Triangle_Fill(uint16_t Xpos, uint16_t Ypos, uint16_t base, uint16_t height, uint16_t color)
+//void LCD_Draw_RightAngle_Triangle_Fill(uint16_t Xpos, uint16_t Ypos, int16_t base, int16_t height, uint16_t color)
+//{
+//    for (int16_t y = 0; y < height; y++)
+//    {
+//        for (int16_t x = 0; x <= (y * base) / height; x++)
+//        {
+//            LCD_Draw_Pixel(Xpos + x, Ypos + y, color);
+//        }
+//    }
+//}
+void Draw_BottomLeft_to_TopRight_Triangle_Fill(uint16_t Xpos, uint16_t Ypos, uint16_t size, uint16_t color)
 {
-    for (int16_t y = 0; y < height; y++)
-    {
-        for (int16_t x = 0; x <= (y * base) / height; x++)
-        {
-            LCD_Draw_Pixel(Xpos + x, Ypos + y, color);
+    for (int y = 0; y < size; y++) {
+        for (int x = 0; x <= y; x++) {
+            LCD_Draw_Pixel(Xpos + x, Ypos - y, color);
         }
     }
 }
+void Draw_TopRight_to_BottomLeft_Triangle_Fill(uint16_t Xpos, uint16_t Ypos, uint16_t size, uint16_t color)
+{
+    for (int y = 0; y < size; y++) {
+        for (int x = 0; x <= y; x++) {
+            LCD_Draw_Pixel(Xpos - x, Ypos + y, color);
+        }
+    }
+}
+
 
 void LCD_Draw_Vertical_Line(uint16_t x, uint16_t y, uint16_t len, uint16_t color)
 {
