@@ -12,6 +12,8 @@
 #include <stdint.h>
 #include "rand.h"
 
+#define TETROMINOSIZES 4
+
 typedef struct {
     int matrix[4][4];
     int x, y;
@@ -20,5 +22,7 @@ typedef struct {
 
 void initializeRandomPiece(Piece *piece);
 uint16_t * piceIndexToColors(int index);
+
+extern int TETROMINOS[7][TETROMINOSIZES][TETROMINOSIZES];
 
 #endif /* INC_PIECES_H_ */

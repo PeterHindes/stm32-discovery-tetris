@@ -328,7 +328,7 @@ void LCD_DisplayChar(uint16_t Xpos, uint16_t Ypos, uint8_t Ascii)
 }
 
 void LCD_DisplayString(int x, int y, const char *str) {
-    int charSpacing = 10; // Adjust character spacing as needed
+    int charSpacing = 16; // Adjust character spacing as needed
     int currentX = x;
 
     // Loop through each character in the string

@@ -170,9 +170,9 @@ void EXTI15_10_IRQHandler()
 		printf("\nX: %03d\nY: %03d \n", StaticTouchData.x, StaticTouchData.y);
 
 		if (startClicked(StaticTouchData.x, LCD_PIXEL_HEIGHT-StaticTouchData.y)){
-			LCD_SetTextColor(LCD_COLOR_BLACK);
+			LCD_SetTextColor(LCD_COLOR_WHITE);
 			LCD_SetFont(&Font16x24);
-			LCD_DisplayString(30,60, "Starting...");
+			LCD_DisplayString(30,190, "Starting...");
 //			LCD_Clear(0, LCD_COLOR_BLACK);
 		}
 

@@ -15,24 +15,24 @@
 // 6 lime green
 // 7 red
 
-int TETROMINOS[7][4][4] = {
+int TETROMINOS[7][TETROMINOSIZES][TETROMINOSIZES] = {
     {{1, 1, 1, 1}},             // I
     {{2, 2}, {2, 2}},           // O
     {{0, 3, 3}, {3, 3, 0}},     // S
     {{4, 4, 0}, {0, 4, 4}},     // Z
     {{5, 0}, {5, 0}, {5, 5}},   // L
     {{0, 6}, {0, 6}, {6, 6}},   // J
-    {{0, 7, 0}, {7, 7, 7}},     // T
+    {{7, 7, 7}, {0, 7, 0}},     // T
 };
 
 uint16_t TETROMINO_COLORS[7][3] = {
-	{0x0679, 0x07FF, 0x04D3}, // 1 teal
-	{0xCE60, 0xFFE0, 0x9CC0}, // 2 yellow
-	{0x9819, 0xC81F, 0x6013}, // 3 magenta
-	{0x0019, 0x001F, 0x0013}, // 4 dark blue
-	{0xCB20, 0xFC40, 0x9A20}, // 5 orange
-	{0x0660, 0x07E0, 0x04C0}, // 6 lime green
-	{0xC800, 0xF800, 0x9800}  // 7 red
+	{0x0679, 0x07FF, 0x04D3}, // teal
+	{0xCE60, 0xFFE0, 0x9CC0}, // yellow
+	{0x0660, 0x07E0, 0x04C0}, // lime green
+	{0xC800, 0xF800, 0x9800}, // red
+	{0xCB20, 0xFC40, 0x9A20}, // orange
+	{0x0019, 0x001F, 0x0013}, // dark blue
+	{0x9819, 0xC81F, 0x6013}, // magenta
 };
 
 void initializeRandomPiece(Piece *piece) {
