@@ -1,0 +1,8 @@
+../Core/Src/draw.c:11:6:Draw_Arrow_Up	32	static
+../Core/Src/draw.c:25:6:Draw_Arrow_Down	32	static
+../Core/Src/draw.c:39:6:Draw_Arrow_Left	32	static
+../Core/Src/draw.c:53:6:Draw_Arrow_Right	32	static
+../Core/Src/draw.c:70:6:Draw_Arrows_On_Screen	16	static
+../Core/Src/draw.c:78:6:Draw_Tetris_Block	40	static
+../Core/Src/draw.c:104:6:Fill_Tetris_Board	48	static
+../Core/Src/draw.c:124:6:LCD_Draw_Rounded_Rectangle_Fill	32	static

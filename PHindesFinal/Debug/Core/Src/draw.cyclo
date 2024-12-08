@@ -1,0 +1,8 @@
+../Core/Src/draw.c:11:6:Draw_Arrow_Up	3
+../Core/Src/draw.c:25:6:Draw_Arrow_Down	3
+../Core/Src/draw.c:39:6:Draw_Arrow_Left	3
+../Core/Src/draw.c:53:6:Draw_Arrow_Right	3
+../Core/Src/draw.c:70:6:Draw_Arrows_On_Screen	5
+../Core/Src/draw.c:78:6:Draw_Tetris_Block	1
+../Core/Src/draw.c:104:6:Fill_Tetris_Board	4
+../Core/Src/draw.c:124:6:LCD_Draw_Rounded_Rectangle_Fill	1

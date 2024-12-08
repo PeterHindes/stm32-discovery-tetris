@@ -9,6 +9,8 @@
 #include "stm32f4xx_hal.h"
 #include <stdio.h>
 #include "gameBoard.h"
+#include "screens.h"
+#include "draw.h"
 
 #ifndef INC_APPLICATIONCODE_H_
 #define INC_APPLICATIONCODE_H_

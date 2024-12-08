@@ -41,137 +41,27 @@ void ApplicationInit(void)
 	#endif // COMPILE_TOUCH_FUNCTIONS
 }
 
-void Draw_Arrow_Up(uint16_t Xcenter, uint16_t Ytop, uint16_t size, uint16_t color)
-{
-    // Draw the shaft
-    for (int i = 0; i < size; i++) {
-        LCD_Draw_Pixel(Xcenter, Ytop + i, color);
-    }
-
-    // Draw the arrowhead
-    for (int i = 0; i < size / 2; i++) {
-        LCD_Draw_Pixel(Xcenter - i, Ytop + i, color); // Left diagonal
-        LCD_Draw_Pixel(Xcenter + i, Ytop + i, color); // Right diagonal
-    }
-}
-
-void Draw_Arrow_Down(uint16_t Xcenter, uint16_t Ytop, uint16_t size, uint16_t color)
-{
-    // Draw the shaft (vertical line)
-    for (int i = 0; i < size; i++) {
-        LCD_Draw_Pixel(Xcenter, Ytop + i, color);
-    }
-
-    // Draw the arrowhead (ensure it fits within the shaft)
-    for (int i = 0; i < size / 2; i++) {
-        LCD_Draw_Pixel(Xcenter + i, Ytop - i + size, color); // Left diagonal
-        LCD_Draw_Pixel(Xcenter - i, Ytop - i + size, color); // Right diagonal
-    }
-}
-
-void Draw_Arrow_Left(uint16_t Xleft, uint16_t Ycenter, uint16_t size, uint16_t color)
-{
-    // Draw the shaft
-    for (int i = 0; i < size; i++) {
-        LCD_Draw_Pixel(Xleft + i, Ycenter, color);
-    }
-
-    // Draw the arrowhead
-    for (int i = 0; i < size / 2; i++) {
-        LCD_Draw_Pixel(Xleft + i, Ycenter - i, color); // Top diagonal
-        LCD_Draw_Pixel(Xleft + i, Ycenter + i, color); // Bottom diagonal
-    }
-}
-
-void Draw_Arrow_Right(uint16_t Xright, uint16_t Ycenter, uint16_t size, uint16_t color)
-{
-    // Draw the shaft
-    for (int i = 0; i < size; i++) {
-        LCD_Draw_Pixel(Xright - i, Ycenter, color);
-    }
-
-    // Draw the arrowhead
-    for (int i = 0; i < size / 2; i++) {
-        LCD_Draw_Pixel(Xright - i, Ycenter - i, color); // Top diagonal
-        LCD_Draw_Pixel(Xright - i, Ycenter + i, color); // Bottom diagonal
-    }
-}
-
-#define arrowSize 20
-#define arrowColor LCD_COLOR_WHITE
-#define activeArrowColor LCD_COLOR_GREEN
-void Draw_Arrows_On_Screen(uint8_t activeArrow) {
-
-    Draw_Arrow_Up(LCD_PIXEL_WIDTH / 2, 10, arrowSize, activeArrow == 0 ? activeArrowColor : arrowColor);
-    Draw_Arrow_Right(LCD_PIXEL_WIDTH - 10, LCD_PIXEL_HEIGHT / 2, arrowSize, activeArrow == 1 ? activeArrowColor : arrowColor);
-    Draw_Arrow_Down(LCD_PIXEL_WIDTH / 2, LCD_PIXEL_HEIGHT - arrowSize - 10, arrowSize, activeArrow == 2 ? activeArrowColor : arrowColor);
-    Draw_Arrow_Left(10, LCD_PIXEL_HEIGHT / 2, arrowSize, activeArrow == 3 ? activeArrowColor : arrowColor);
-}
-
-void Draw_Tetris_Block(uint16_t Xpos, uint16_t Ypos, uint16_t size, uint16_t mainColor, uint16_t brightColor, uint16_t darkColor)
-{
-    uint16_t shadingThickness = size / 6; // Thickness of the shading
-
-    // 1. Draw the main square
-    LCD_Draw_Rectangle_Fill(Xpos, Ypos, size, size, mainColor);
-
-    // 2. Draw the top bright rectangle
-    LCD_Draw_Rectangle_Fill(Xpos, Ypos, size, shadingThickness, brightColor);
-
-    // 3. Draw the left bright rectangle
-    LCD_Draw_Rectangle_Fill(Xpos, Ypos, shadingThickness, size, brightColor);
-
-    // 4. Draw the bottom dark rectangle
-    LCD_Draw_Rectangle_Fill(Xpos, Ypos + size - shadingThickness, size, shadingThickness, darkColor);
-
-    // 5. Draw the right dark rectangle
-    LCD_Draw_Rectangle_Fill(Xpos + size - shadingThickness, Ypos, shadingThickness, size, darkColor);
-
-    // 6. Draw the bottom-left bright triangle
-    Draw_BottomLeft_to_TopRight_Triangle_Fill(Xpos, Ypos + size - 1, shadingThickness, brightColor);
-
-    // 7. Draw the top-right bright triangle
-    Draw_BottomLeft_to_TopRight_Triangle_Fill(Xpos + size - shadingThickness, Ypos + shadingThickness - 1, shadingThickness, brightColor);
-}
-
-void Fill_Tetris_Board(Board *board, uint16_t startX, uint16_t startY)
-{
-    for (uint16_t row = 0; row < BOARD_HEIGHT; row++) {
-        for (uint16_t col = 0; col < BOARD_WIDTH; col++) {
-            // Calculate the position of the current block
-            uint16_t xPos = startX + col * BLOCK_SIZE + col;
-            uint16_t yPos = startY - row * BLOCK_SIZE + row; // Bottom-up positioning
-
-            // Get the colors for this position
-            int index = board->grid[row][col];
-            if (index != 0){
-				uint16_t * colors = piceIndexToColors(index);
-
-				// Draw the Tetris block
-				Draw_Tetris_Block(xPos, yPos, BLOCK_SIZE, colors[0], colors[1], colors[2]);
-            }
-        }
-    }
-}
-
 
 void LCD_Visual_Demo(void)
 {
 //	visualDemo();
-	LCD_Clear(0, LCD_COLOR_BLACK);
 
-	Board board;
-	initializeBoard(& board);
-	board.grid[0][0] = 6;
-	board.grid[0][1] = 2;
-	board.grid[1][0] = 5;
+//	LCD_Clear(0, LCD_COLOR_BLACK);
+//
+//	Board board;
+//	initializeBoard(& board);
+//	board.grid[0][0] = 6;
+//	board.grid[0][1] = 2;
+//	board.grid[1][0] = 5;
+//
+//	Fill_Tetris_Board(
+//			& board,
+//			LCD_PIXEL_WIDTH /2 - BOARD_WIDTH*(BLOCK_SIZE + 1)/2 ,
+//			LCD_PIXEL_HEIGHT - 50
+//			);
+//	Draw_Arrows_On_Screen(-1);
 
-	Fill_Tetris_Board(
-			& board,
-			LCD_PIXEL_WIDTH /2 - BOARD_WIDTH*(BLOCK_SIZE + 1)/2 ,
-			LCD_PIXEL_HEIGHT - 50
-			);
-	Draw_Arrows_On_Screen(-1);
+	showStartScreen();
 }
 
 #if COMPILE_TOUCH_FUNCTIONS == 1
@@ -278,11 +168,19 @@ void EXTI15_10_IRQHandler()
 		DetermineTouchPosition(&StaticTouchData);
 		/* Touch valid */
 		printf("\nX: %03d\nY: %03d \n", StaticTouchData.x, StaticTouchData.y);
-		LCD_Clear(0, LCD_COLOR_BLACK);
 
-		Draw_Arrows_On_Screen(
-			Determine_Touch_Quadrant(StaticTouchData.x,LCD_PIXEL_HEIGHT-StaticTouchData.y , LCD_PIXEL_WIDTH, LCD_PIXEL_HEIGHT)
-		);
+		if (startClicked(StaticTouchData.x, LCD_PIXEL_HEIGHT-StaticTouchData.y)){
+			LCD_SetTextColor(LCD_COLOR_BLACK);
+			LCD_SetFont(&Font16x24);
+			LCD_DisplayString(30,60, "Starting...");
+//			LCD_Clear(0, LCD_COLOR_BLACK);
+		}
+
+//		LCD_Clear(0, LCD_COLOR_BLACK);
+//
+//		Draw_Arrows_On_Screen(
+//			Determine_Touch_Quadrant(StaticTouchData.x,LCD_PIXEL_HEIGHT-StaticTouchData.y , LCD_PIXEL_WIDTH, LCD_PIXEL_HEIGHT)
+//		);
 	}else{
 		/* Touch not pressed */
 		printf("\nNot pressed \n");

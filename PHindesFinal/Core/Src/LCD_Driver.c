@@ -327,6 +327,17 @@ void LCD_DisplayChar(uint16_t Xpos, uint16_t Ypos, uint8_t Ascii)
   LCD_Draw_Char(Xpos, Ypos, &LCD_Currentfonts->table[Ascii * LCD_Currentfonts->Height]);
 }
 
+void LCD_DisplayString(int x, int y, const char *str) {
+    int charSpacing = 10; // Adjust character spacing as needed
+    int currentX = x;
+
+    // Loop through each character in the string
+    for (int i = 0; str[i] != '\0'; i++) {
+        LCD_DisplayChar(currentX, y, str[i]);
+        currentX += charSpacing; // Move to the next character position
+    }
+}
+
 void visualDemo(void)
 {
 	uint16_t x;
