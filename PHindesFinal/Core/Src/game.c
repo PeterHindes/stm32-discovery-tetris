@@ -8,10 +8,13 @@
 #include "game.h"
 
 Board board;
+Piece currentPiece;
 Piece nextPiece;
 
 void initGame() {
 	initializeBoard(& board);
+	initializeRandomPiece(& currentPiece);
+	initializeRandomPiece(& nextPiece);
 	board.grid[0][0] = 6;
 	board.grid[0][1] = 2;
 	board.grid[1][0] = 5;

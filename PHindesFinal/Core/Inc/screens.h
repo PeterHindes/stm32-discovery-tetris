@@ -21,4 +21,6 @@ bool startClicked(uint16_t x, uint16_t y);
 
 void showGameScreen();
 
+void showEndScreen();
+
 #endif /* INC_SCREENS_H_ */

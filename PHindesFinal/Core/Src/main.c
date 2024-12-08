@@ -41,7 +41,7 @@ int main(void)
 
   ApplicationInit(); // Initializes the LCD functionality
 
-  LCD_Visual_Demo();
+  showStartScreen();
 
 //  HAL_Delay(5000);
 

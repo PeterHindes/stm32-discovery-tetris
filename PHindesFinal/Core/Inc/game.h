@@ -14,6 +14,7 @@
 #include <string.h>
 
 extern Board board;
+extern Piece currentPiece;
 extern Piece nextPiece;
 
 void initGame();

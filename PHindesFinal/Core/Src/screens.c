@@ -45,12 +45,16 @@ bool startClicked(uint16_t x, uint16_t y) {
 }
 
 void showGameScreen(){
-	DrawTetromino(& nextPiece, 130, 10);
+	// Game Board
+	Board shownBoard = boardWithPiece(& board, & currentPiece);
 	Fill_Tetris_Board(
-			& board,
+			& shownBoard,
 			LCD_PIXEL_WIDTH /2 - BOARD_WIDTH*(BLOCK_SIZE + 1)/2 ,
-			LCD_PIXEL_HEIGHT - 50
+			50
 			);
+
+	// Next Piece
+//	DrawTetromino(& nextPiece, 130, 10);
 }
 
 void showEndScreen(){

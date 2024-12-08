@@ -1,8 +1,8 @@
-../Core/Src/game.c:13:6:initGame	8	static
-../Core/Src/game.c:20:6:movePieceDown	16	static
-../Core/Src/game.c:29:6:lockPiece	32	static
-../Core/Src/game.c:43:6:collision	32	static
-../Core/Src/game.c:63:6:rotatePiece	96	static
-../Core/Src/game.c:81:6:dropPiece	16	static
-../Core/Src/game.c:87:6:handleInput	32	static
-../Core/Src/game.c:121:6:isGameOver	24	static
+../Core/Src/game.c:14:6:initGame	8	static
+../Core/Src/game.c:23:6:movePieceDown	16	static
+../Core/Src/game.c:32:6:lockPiece	32	static
+../Core/Src/game.c:46:6:collision	32	static
+../Core/Src/game.c:66:6:rotatePiece	96	static
+../Core/Src/game.c:84:6:dropPiece	16	static
+../Core/Src/game.c:90:6:handleInput	32	static
+../Core/Src/game.c:124:6:isGameOver	24	static

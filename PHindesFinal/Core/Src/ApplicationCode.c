@@ -41,29 +41,6 @@ void ApplicationInit(void)
 	#endif // COMPILE_TOUCH_FUNCTIONS
 }
 
-
-void LCD_Visual_Demo(void)
-{
-//	visualDemo();
-
-//	LCD_Clear(0, LCD_COLOR_BLACK);
-//
-//	Board board;
-//	initializeBoard(& board);
-//	board.grid[0][0] = 6;
-//	board.grid[0][1] = 2;
-//	board.grid[1][0] = 5;
-//
-//	Fill_Tetris_Board(
-//			& board,
-//			LCD_PIXEL_WIDTH /2 - BOARD_WIDTH*(BLOCK_SIZE + 1)/2 ,
-//			LCD_PIXEL_HEIGHT - 50
-//			);
-//	Draw_Arrows_On_Screen(-1);
-
-	showStartScreen();
-}
-
 #if COMPILE_TOUCH_FUNCTIONS == 1
 void LCD_Touch_Polling_Demo(void)
 {
@@ -187,11 +164,10 @@ void EXTI15_10_IRQHandler()
 			uint8_t activeArrow = Determine_Touch_Quadrant(StaticTouchData.x,LCD_PIXEL_HEIGHT-StaticTouchData.y , LCD_PIXEL_WIDTH, LCD_PIXEL_HEIGHT);
 			Draw_Arrows_On_Screen(activeArrow);
 
-			Piece pc;
-			pc = nextPiece;
-			initializeRandomPiece( & nextPiece);
+//			currentPiece = nextPiece;
+//			initializeRandomPiece( & nextPiece);
 
-//			handleInput(& board, & pc, activeArrow);
+			handleInput(& board, & currentPiece, activeArrow);
 
 			showGameScreen();
 			Draw_Arrows_On_Screen(activeArrow);

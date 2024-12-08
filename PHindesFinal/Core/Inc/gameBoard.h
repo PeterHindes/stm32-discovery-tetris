@@ -16,7 +16,7 @@ typedef struct {
 } Board;
 
 void initializeBoard(Board *board);
-void displayBoardWithPiece(Board *board, Piece *piece);
+Board boardWithPiece(Board *board, Piece *piece);
 void clearCompletedRows(Board *board);
 
 #endif /* INC_GAMEBOARD_H_ */
