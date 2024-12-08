@@ -41,6 +41,8 @@ void lockPiece(Board *board, Piece *piece) {
             }
         }
     }
+    currentPiece = nextPiece;
+    initializeRandomPiece( & nextPiece);
 }
 
 bool collision(Board *board, Piece *piece) {
@@ -105,9 +107,11 @@ void handleInput(Board *board, Piece *piece, uint8_t command) {
             }
             break;
         case 2: // Soft drop
-            movePieceDown(board, piece);
+            if (!movePieceDown(board, piece)){
+            	lockPiece(board, piece);
+            }
             break;
-        case ' ': // Hard drop
+        case 4: // Hard drop
             dropPiece(board, piece);
             break;
     }
@@ -115,8 +119,8 @@ void handleInput(Board *board, Piece *piece, uint8_t command) {
     // Undo move if collision detected
     if (collision(board, piece)) {
         switch (command) {
-            case 'a': piece->x++; break;
-            case 'd': piece->x--; break;
+            case 3: piece->x++; break;
+            case 1: piece->x--; break;
         }
     }
 }

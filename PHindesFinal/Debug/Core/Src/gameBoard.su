@@ -1,3 +1,3 @@
 ../Core/Src/gameBoard.c:10:6:initializeBoard	24	static
 ../Core/Src/gameBoard.c:18:6:clearCompletedRows	40	static
-../Core/Src/gameBoard.c:42:7:boardWithPiece	848	static
+../Core/Src/gameBoard.c:42:7:boardWithPiece	448	static

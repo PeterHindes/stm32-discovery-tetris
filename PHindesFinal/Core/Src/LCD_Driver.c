@@ -207,9 +207,12 @@ void LTCD__Init(void)
 void LCD_Draw_Pixel(uint16_t x, uint16_t y, uint16_t color)
 {
 #if PREVENT_PIXEL_OUT_OF_BOUNDS == 1
-	if (x>=0 && y>=0 && x <LCD_PIXEL_WIDTH && y<LCD_PIXEL_HEIGHT)
+	if (x>=0 && y>=0 && x <LCD_PIXEL_WIDTH && y<LCD_PIXEL_HEIGHT) {
 #endif
 		frameBuffer[y*LCD_PIXEL_WIDTH+x] = color;
+#if PREVENT_PIXEL_OUT_OF_BOUNDS == 1
+	}
+#endif
 }
 
 /*

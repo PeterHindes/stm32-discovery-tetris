@@ -56,6 +56,7 @@ Board boardWithPiece(Board *board, Piece *piece) {
             int py = piece->y + pi;
 
 //            if (px >= 0 && px < BOARD_WIDTH && py >= 0 && py < BOARD_HEIGHT && piece->matrix[pi][pj] == 1) {
+            if (piece->matrix[pi][pj])
             	tempBoard.grid[py][px] = piece->matrix[pi][pj];
 //            }
         }
