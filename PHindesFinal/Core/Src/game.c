@@ -7,6 +7,16 @@
 
 #include "game.h"
 
+Board board;
+Piece nextPiece;
+
+void initGame() {
+	initializeBoard(& board);
+	board.grid[0][0] = 6;
+	board.grid[0][1] = 2;
+	board.grid[1][0] = 5;
+}
+
 bool movePieceDown(Board *board, Piece *piece) {
     piece->y++;
     if (collision(board, piece)) {
@@ -74,15 +84,15 @@ void dropPiece(Board *board, Piece *piece) {
     lockPiece(board, piece);
 }
 
-void handleInput(Board *board, Piece *piece, char command) {
+void handleInput(Board *board, Piece *piece, uint8_t command) {
     switch (command) {
-        case 'a': // Move left
+        case 3: // Move left
             piece->x--;
             break;
-        case 'd': // Move right
+        case 1: // Move right
             piece->x++;
             break;
-        case 'w': // Rotate
+        case 0: // Rotate
             rotatePiece(piece);
             if (collision(board, piece)) {
                 // Undo rotation if collision occurs
@@ -91,7 +101,7 @@ void handleInput(Board *board, Piece *piece, char command) {
                 }
             }
             break;
-        case 's': // Soft drop
+        case 2: // Soft drop
             movePieceDown(board, piece);
             break;
         case ' ': // Hard drop

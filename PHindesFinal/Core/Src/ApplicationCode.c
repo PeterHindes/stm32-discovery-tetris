@@ -169,24 +169,36 @@ void EXTI15_10_IRQHandler()
 		/* Touch valid */
 		printf("\nX: %03d\nY: %03d \n", StaticTouchData.x, StaticTouchData.y);
 
-		if (startClicked(StaticTouchData.x, LCD_PIXEL_HEIGHT-StaticTouchData.y)){
-			LCD_SetTextColor(LCD_COLOR_WHITE);
-			LCD_SetFont(&Font16x24);
-			LCD_DisplayString(30,190, "Starting...");
-//			LCD_Clear(0, LCD_COLOR_BLACK);
-		}
+		if (activeScreen == 0){
+			if (startClicked(StaticTouchData.x, LCD_PIXEL_HEIGHT-StaticTouchData.y)){
+				LCD_SetTextColor(LCD_COLOR_WHITE);
+				LCD_SetFont(&Font16x24);
+				LCD_DisplayString(30,190, "Starting...");
+//				HAL_Delay(200);
+				activeScreen = 1;
+				initGame();
+				LCD_Clear(0, LCD_COLOR_BLACK);
+				showGameScreen();
+				Draw_Arrows_On_Screen(-1);
+			}
+		} else if (activeScreen == 1){
+			LCD_Clear(0, LCD_COLOR_BLACK);
 
-//		LCD_Clear(0, LCD_COLOR_BLACK);
-//
-//		Draw_Arrows_On_Screen(
-//			Determine_Touch_Quadrant(StaticTouchData.x,LCD_PIXEL_HEIGHT-StaticTouchData.y , LCD_PIXEL_WIDTH, LCD_PIXEL_HEIGHT)
-//		);
+			uint8_t activeArrow = Determine_Touch_Quadrant(StaticTouchData.x,LCD_PIXEL_HEIGHT-StaticTouchData.y , LCD_PIXEL_WIDTH, LCD_PIXEL_HEIGHT);
+			Draw_Arrows_On_Screen(activeArrow);
+
+			Piece pc;
+			pc = nextPiece;
+			initializeRandomPiece( & nextPiece);
+
+//			handleInput(& board, & pc, activeArrow);
+
+			showGameScreen();
+			Draw_Arrows_On_Screen(activeArrow);
+		}
 	}else{
 		/* Touch not pressed */
-		printf("\nNot pressed \n");
-//		DetermineTouchPosition(&StaticTouchData); // this dosent work here, just has old position
-//		LCD_Clear(0, LCD_COLOR_GREEN);
-//		LCD_Draw_Circle_Fill(StaticTouchData.x,LCD_PIXEL_HEIGHT-StaticTouchData.y,40,LCD_COLOR_BLACK);
+		Draw_Arrows_On_Screen(-1);
 	}
 
 	STMPE811_Write(STMPE811_FIFO_STA, 0x01);

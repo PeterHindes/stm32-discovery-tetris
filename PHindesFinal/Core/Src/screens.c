@@ -7,6 +7,8 @@
 
 #include "screens.h"
 
+uint16_t activeScreen = 0;
+
 #define BORDER_GAP 30
 #define START_AREA_X_LEN (LCD_PIXEL_WIDTH - BORDER_GAP *2)
 #define START_AREA_Y_LEN (24*2)
@@ -19,14 +21,14 @@ void showStartScreen(){
 	LCD_SetFont(&Font16x24);
 
 //	Draw_Tetris_Block(40, 40, 20, 0x0679, 0x07FF, 0x04D3);
-	DrawTetromino(0, 20, 40);
-	DrawTetromino(1, 20, 70);
-	DrawTetromino(2, 90, 40);
-	DrawTetromino(3, 140, 40);
-	DrawTetromino(4, 65, 80);
-	DrawTetromino(5, 100, 80);
+	DrawTetrominoByIndex(0, 20, 40);
+	DrawTetrominoByIndex(1, 20, 70);
+	DrawTetrominoByIndex(2, 90, 40);
+	DrawTetrominoByIndex(3, 140, 40);
+	DrawTetrominoByIndex(4, 65, 80);
+	DrawTetrominoByIndex(5, 100, 80);
 
-	DrawTetromino(6, 50, 140);
+	DrawTetrominoByIndex(6, 50, 140);
 	LCD_SetTextColor(LCD_COLOR_MAGENTA);
 	LCD_DisplayString(100, 152, "ETRIS");
 
@@ -40,4 +42,17 @@ void showStartScreen(){
 
 bool startClicked(uint16_t x, uint16_t y) {
 	return (x >= START_AREA_X && x <= (START_AREA_X + START_AREA_X_LEN) && y >= START_AREA_Y && y <= (START_AREA_Y + START_AREA_Y_LEN));
+}
+
+void showGameScreen(){
+	DrawTetromino(& nextPiece, 130, 10);
+	Fill_Tetris_Board(
+			& board,
+			LCD_PIXEL_WIDTH /2 - BOARD_WIDTH*(BLOCK_SIZE + 1)/2 ,
+			LCD_PIXEL_HEIGHT - 50
+			);
+}
+
+void showEndScreen(){
+
 }

@@ -12,8 +12,13 @@
 #include <stdbool.h>
 #include "LCD_Driver.h"
 #include "draw.h"
+#include "game.h"
+
+extern uint16_t activeScreen;
 
 void showStartScreen();
 bool startClicked(uint16_t x, uint16_t y);
+
+void showGameScreen();
 
 #endif /* INC_SCREENS_H_ */

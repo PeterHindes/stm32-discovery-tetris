@@ -121,7 +121,7 @@ void Fill_Tetris_Board(Board *board, uint16_t startX, uint16_t startY)
     }
 }
 
-void DrawTetromino(uint8_t pieceNumber, uint16_t startX, uint16_t startY)
+void DrawTetrominoByIndex(uint8_t pieceNumber, uint16_t startX, uint16_t startY)
 {
     for (uint16_t row = 0; row < TETROMINOSIZES; row++) {
         for (uint16_t col = 0; col < TETROMINOSIZES; col++) {
@@ -131,6 +131,25 @@ void DrawTetromino(uint8_t pieceNumber, uint16_t startX, uint16_t startY)
 
             // Get the colors for this position
             int index = TETROMINOS[pieceNumber][row][col];
+            if (index != 0){
+				uint16_t * colors = piceIndexToColors(index-1);
+
+				// Draw the Tetris block
+				Draw_Tetris_Block(xPos, yPos, BLOCK_SIZE, colors[0], colors[1], colors[2]);
+            }
+        }
+    }
+}
+void DrawTetromino(Piece * piece, uint16_t startX, uint16_t startY)
+{
+    for (uint16_t row = 0; row < TETROMINOSIZES; row++) {
+        for (uint16_t col = 0; col < TETROMINOSIZES; col++) {
+            // Calculate the position of the current block
+            uint16_t xPos = startX + col * BLOCK_SIZE + col;
+            uint16_t yPos = startY + row * BLOCK_SIZE + row; // Bottom-up positioning
+
+            // Get the colors for this position
+            int index = piece->matrix[row][col];
             if (index != 0){
 				uint16_t * colors = piceIndexToColors(index-1);
 
