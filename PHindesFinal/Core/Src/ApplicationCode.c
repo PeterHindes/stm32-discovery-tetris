@@ -154,6 +154,7 @@ void EXTI15_10_IRQHandler()
 //				HAL_Delay(200);
 				activeScreen = 1;
 				initGame();
+//				HAL_Delay(2);
 				LCD_Clear(0, LCD_COLOR_BLACK);
 				showGameScreen();
 				Draw_Arrows_On_Screen(-1);

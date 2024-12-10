@@ -15,6 +15,11 @@ uint16_t activeScreen = 0;
 #define START_AREA_X BORDER_GAP
 #define START_AREA_Y (LCD_PIXEL_HEIGHT - START_AREA_Y_LEN - BORDER_GAP)
 
+void shadingDemo(){
+	LCD_Clear(0, LCD_COLOR_BLACK);
+
+	Draw_Tetris_Block(40,40,80,0xCB20, 0xFC40, 0x9A20);
+}
 void showStartScreen(){
 	LCD_Clear(0, LCD_COLOR_BLACK);
 

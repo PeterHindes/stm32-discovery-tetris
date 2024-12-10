@@ -1,7 +1,6 @@
 Core/Src/draw.o: ../Core/Src/draw.c ../Core/Inc/draw.h \
  ../Core/Inc/gameBoard.h ../Core/Inc/pieces.h ../Core/Inc/constants.h \
- ../Core/Inc/rand.h ../Core/Inc/LCD_Driver.h \
- ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+ ../Core/Inc/rand.h ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
@@ -34,13 +33,13 @@ Core/Src/draw.o: ../Core/Src/draw.c ../Core/Inc/draw.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
- ../Core/Inc/ili9341.h ../Core/Inc/fonts.h ../Core/Inc/stmpe811.h
+ ../Core/Inc/LCD_Driver.h ../Core/Inc/ili9341.h ../Core/Inc/fonts.h \
+ ../Core/Inc/stmpe811.h
 ../Core/Inc/draw.h:
 ../Core/Inc/gameBoard.h:
 ../Core/Inc/pieces.h:
 ../Core/Inc/constants.h:
 ../Core/Inc/rand.h:
-../Core/Inc/LCD_Driver.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
@@ -74,6 +73,7 @@ Core/Src/draw.o: ../Core/Src/draw.c ../Core/Inc/draw.h \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
+../Core/Inc/LCD_Driver.h:
 ../Core/Inc/ili9341.h:
 ../Core/Inc/fonts.h:
 ../Core/Inc/stmpe811.h:

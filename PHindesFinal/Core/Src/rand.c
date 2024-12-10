@@ -5,7 +5,11 @@
  *      Author: user
  */
 #include "rand.h"
+RNG_HandleTypeDef rng;
+void initRng(RNG_HandleTypeDef hrng){
+	rng=hrng;
+}
 
 uint32_t rand(){
-	return 3;
+	return rng.RandomNumber;
 }

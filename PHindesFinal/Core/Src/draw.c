@@ -26,13 +26,13 @@ void Draw_Arrow_Down(uint16_t Xcenter, uint16_t Ytop, uint16_t size, uint16_t co
 {
     // Draw the shaft (vertical line)
     for (int i = 0; i < size; i++) {
-        LCD_Draw_Pixel(Xcenter, Ytop + i, color);
+        LCD_Draw_Pixel(Xcenter, Ytop - i, color);
     }
 
     // Draw the arrowhead (ensure it fits within the shaft)
     for (int i = 0; i < size / 2; i++) {
-        LCD_Draw_Pixel(Xcenter + i, Ytop - i + size, color); // Left diagonal
-        LCD_Draw_Pixel(Xcenter - i, Ytop - i + size, color); // Right diagonal
+        LCD_Draw_Pixel(Xcenter + i, Ytop - i , color); // Left diagonal
+        LCD_Draw_Pixel(Xcenter - i, Ytop - i, color); // Right diagonal
     }
 }
 
@@ -71,7 +71,7 @@ void Draw_Arrows_On_Screen(uint8_t activeArrow) {
 
     Draw_Arrow_Up(LCD_PIXEL_WIDTH / 2, 10, arrowSize, activeArrow == 0 ? activeArrowColor : arrowColor);
     Draw_Arrow_Right(LCD_PIXEL_WIDTH - 10, LCD_PIXEL_HEIGHT / 2, arrowSize, activeArrow == 1 ? activeArrowColor : arrowColor);
-    Draw_Arrow_Down(LCD_PIXEL_WIDTH / 2, LCD_PIXEL_HEIGHT - arrowSize - 10, arrowSize, activeArrow == 2 ? activeArrowColor : arrowColor);
+    Draw_Arrow_Down(LCD_PIXEL_WIDTH / 2, LCD_PIXEL_HEIGHT - 10, arrowSize, activeArrow == 2 ? activeArrowColor : arrowColor);
     Draw_Arrow_Left(10, LCD_PIXEL_HEIGHT / 2, arrowSize, activeArrow == 3 ? activeArrowColor : arrowColor);
 }
 
@@ -112,7 +112,7 @@ void Fill_Tetris_Board(Board *board, uint16_t startX, uint16_t startY)
             // Get the colors for this position
             int index = board->grid[row][col];
             if (index != 0){
-				uint16_t * colors = piceIndexToColors(index);
+				uint16_t * colors = piceIndexToColors(index-1);
 
 				// Draw the Tetris block
 				Draw_Tetris_Block(xPos, yPos, BLOCK_SIZE, colors[0], colors[1], colors[2]);

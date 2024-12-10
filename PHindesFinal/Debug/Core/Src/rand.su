@@ -1,1 +1,2 @@
-../Core/Src/rand.c:9:10:rand	4	static
+../Core/Src/rand.c:9:6:initRng	24	static
+../Core/Src/rand.c:13:10:rand	4	static

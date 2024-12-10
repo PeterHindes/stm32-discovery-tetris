@@ -1,1 +1,2 @@
-../Core/Src/rand.c:9:10:rand	1
+../Core/Src/rand.c:9:6:initRng	1
+../Core/Src/rand.c:13:10:rand	1

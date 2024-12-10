@@ -16,6 +16,8 @@
 
 extern uint16_t activeScreen;
 
+void shadingDemo();
+
 void showStartScreen();
 bool startClicked(uint16_t x, uint16_t y);
 
