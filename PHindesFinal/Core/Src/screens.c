@@ -49,19 +49,45 @@ bool startClicked(uint16_t x, uint16_t y) {
 	return (x >= START_AREA_X && x <= (START_AREA_X + START_AREA_X_LEN) && y >= START_AREA_Y && y <= (START_AREA_Y + START_AREA_Y_LEN));
 }
 
+void uint32_to_string(uint32_t value, char *buffer, size_t buffer_size) {
+    // Ensure the buffer is large enough to hold the maximum uint32_t value and a null terminator
+    if (buffer_size < 11) {
+        // Handle error: buffer too small
+        return;
+    }
+    // Format the uint32_t value as a string and store it in the buffer
+    snprintf(buffer, buffer_size, "%u", value);
+}
+
 void showGameScreen(){
 	// Game Board
 	Board shownBoard = boardWithPiece(& board, & currentPiece);
 	Fill_Tetris_Board(
 			& shownBoard,
 			LCD_PIXEL_WIDTH /2 - BOARD_WIDTH*(BLOCK_SIZE + 1)/2 ,
-			50
+			12
 			);
 
 	// Next Piece
-//	DrawTetromino(& nextPiece, 130, 10);
+	DrawTetromino(& nextPiece, 190, 10);
+
+//	// Test
+//	char randNumStr[11];
+//	uint32_to_string(rand(),& randNumStr,11);
+//	LCD_DisplayString(10,100,randNumStr);
+
+	char scoreStr[11];
+	uint32_to_string(pointsScored,&scoreStr,11);
+	LCD_DisplayString(10,10,scoreStr);
 }
 
 void showEndScreen(){
+	LCD_Clear(0,LCD_COLOR_MAGENTA);
+	char scoreStr[11];
+	uint32_to_string(pointsScored,&scoreStr,11);
+	LCD_DisplayString(10,10,scoreStr);
 
+	uint32_t timeLasted = __HAL_TIM_GET_COUNTER(&htim5);
+	uint32_to_string(timeLasted,&scoreStr,11);
+	LCD_DisplayString(10,40,scoreStr);
 }

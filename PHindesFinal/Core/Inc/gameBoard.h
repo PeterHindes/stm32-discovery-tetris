@@ -17,6 +17,5 @@ typedef struct {
 
 void initializeBoard(Board *board);
 Board boardWithPiece(Board *board, Piece *piece);
-void clearCompletedRows(Board *board);
 
 #endif /* INC_GAMEBOARD_H_ */

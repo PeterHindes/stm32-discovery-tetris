@@ -1,0 +1,2 @@
+../Core/Src/gameBoard.c:10:6:initializeBoard	0	static
+../Core/Src/gameBoard.c:18:7:boardWithPiece	816	static

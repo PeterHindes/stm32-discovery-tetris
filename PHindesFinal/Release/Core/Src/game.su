@@ -1,0 +1,9 @@
+../Core/Src/game.c:15:6:initGame	8	static
+../Core/Src/game.c:70:10:clearCompletedRows	24	static
+../Core/Src/game.c:97:6:collision	20	static
+../Core/Src/game.c:117:6:rotatePiece	80	static
+../Core/Src/game.c:169:6:isGameOver	0	static
+../Core/Src/game.c:36:6:lockPiece	24	static
+../Core/Src/game.c:22:6:movePieceDown	16	static
+../Core/Src/game.c:31:6:dropPiece	16	static
+../Core/Src/game.c:135:6:handleInput	16	static

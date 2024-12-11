@@ -5,11 +5,8 @@
  *      Author: user
  */
 #include "rand.h"
-RNG_HandleTypeDef rng;
-void initRng(RNG_HandleTypeDef hrng){
-	rng=hrng;
-}
-
 uint32_t rand(){
-	return rng.RandomNumber;
+	uint32_t rand;
+	HAL_RNG_GenerateRandomNumber(& hrng, &rand);
+	return rand;
 }

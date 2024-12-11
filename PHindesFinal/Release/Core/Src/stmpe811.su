@@ -1,0 +1,13 @@
+../Core/Src/stmpe811.c:251:6:isSTMPE811_Ready	8	static
+../Core/Src/stmpe811.c:264:6:enableInterruptSupportForTouch	32	static,ignoring_inline_asm
+../Core/Src/stmpe811.c:287:6:verifyHAL_I2C_IS_OKAY	0	static
+../Core/Src/stmpe811.c:348:6:I2C3_Write	32	static
+../Core/Src/stmpe811.c:160:6:STMPE811_Write	0	static
+../Core/Src/stmpe811.c:357:6:I2C3_Read	24	static
+../Core/Src/stmpe811.c:151:9:STMPE811_Read	16	static
+../Core/Src/stmpe811.c:365:6:I2C3_MulitByteRead	24	static
+../Core/Src/stmpe811.c:35:18:STMPE811_Init	56	static
+../Core/Src/stmpe811.c:371:10:TM_STMPE811_ReadX	16	static
+../Core/Src/stmpe811.c:400:10:TM_STMPE811_ReadY	16	static
+../Core/Src/stmpe811.c:167:18:STMPE811_ReadTouch	8	static
+../Core/Src/stmpe811.c:229:6:STMPE811_DetermineTouchPosition	8	static

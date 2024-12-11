@@ -11,8 +11,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include "stm32f4xx_hal.h"
+#include "main.h"
 
-void initRng(RNG_HandleTypeDef hrng);
 uint32_t rand();
 
 #endif /* INC_RAND_H_ */

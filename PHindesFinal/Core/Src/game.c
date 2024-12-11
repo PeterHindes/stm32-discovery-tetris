@@ -10,23 +10,27 @@
 Board board;
 Piece currentPiece;
 Piece nextPiece;
+uint32_t pointsScored;
 
 void initGame() {
 	initializeBoard(& board);
 	initializeRandomPiece(& currentPiece);
 	initializeRandomPiece(& nextPiece);
-	board.grid[0][0] = 6;
-	board.grid[0][1] = 2;
-	board.grid[1][0] = 5;
+	pointsScored = 0;
 }
 
 bool movePieceDown(Board *board, Piece *piece) {
     piece->y++;
     if (collision(board, piece)) {
         piece->y--;
+        lockPiece(board, piece);
         return false;
     }
     return true;
+}
+void dropPiece(Board *board, Piece *piece) {
+    while (movePieceDown(board, piece)) {
+    }
 }
 
 void lockPiece(Board *board, Piece *piece) {
@@ -41,8 +45,53 @@ void lockPiece(Board *board, Piece *piece) {
             }
         }
     }
+
+    if (isGameOver(board)){
+    	showEndScreen();
+    	Error_Handler();
+    }
+
+
     currentPiece = nextPiece;
     initializeRandomPiece( & nextPiece);
+    switch (clearCompletedRows(board)){
+		case 4:
+			pointsScored+=300;
+		case 3:
+			pointsScored+=200;
+		case 2:
+			pointsScored+=200;
+		case 1:
+			pointsScored+=100;
+		case 0:
+			break;
+    }
+}
+uint16_t clearCompletedRows(Board *board) {
+	uint16_t clearedRows = 0;
+    for (int i = 0; i < BOARD_HEIGHT; i++) {
+        int isComplete = 1;
+        for (int j = 0; j < BOARD_WIDTH; j++) {
+            if (board->grid[i][j] == 0) {
+                isComplete = 0;
+                break;
+            }
+        }
+
+        if (isComplete) {
+            clearedRows++;
+            for (int k = i; k > 0; k--) {
+                for (int j = 0; j < BOARD_WIDTH; j++) {
+                    board->grid[k][j] = board->grid[k - 1][j];
+                }
+            }
+
+            for (int j = 0; j < BOARD_WIDTH; j++) {
+                board->grid[0][j] = 0;
+            }
+        }
+    }
+    return clearedRows;
 }
 
 bool collision(Board *board, Piece *piece) {
@@ -83,12 +132,6 @@ void rotatePiece(Piece *piece) {
     }
 }
 
-void dropPiece(Board *board, Piece *piece) {
-    while (movePieceDown(board, piece)) {
-    }
-    lockPiece(board, piece);
-}
-
 void handleInput(Board *board, Piece *piece, uint8_t command) {
     switch (command) {
         case 3: // Move left
@@ -107,9 +150,7 @@ void handleInput(Board *board, Piece *piece, uint8_t command) {
             }
             break;
         case 2: // Soft drop
-            if (!movePieceDown(board, piece)){
-            	lockPiece(board, piece);
-            }
+        	movePieceDown(board, piece);
             break;
         case 4: // Hard drop
             dropPiece(board, piece);

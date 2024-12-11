@@ -7,5 +7,5 @@
 ../Core/Src/stm32f4xx_hal_msp.c:374:6:HAL_RNG_MspDeInit	16	static
 ../Core/Src/stm32f4xx_hal_msp.c:396:6:HAL_SPI_MspInit	48	static
 ../Core/Src/stm32f4xx_hal_msp.c:434:6:HAL_SPI_MspDeInit	16	static
-../Core/Src/stm32f4xx_hal_msp.c:464:6:HAL_TIM_OnePulse_MspInit	24	static
-../Core/Src/stm32f4xx_hal_msp.c:490:6:HAL_TIM_OnePulse_MspDeInit	16	static
+../Core/Src/stm32f4xx_hal_msp.c:464:6:HAL_TIM_Base_MspInit	24	static
+../Core/Src/stm32f4xx_hal_msp.c:500:6:HAL_TIM_Base_MspDeInit	16	static

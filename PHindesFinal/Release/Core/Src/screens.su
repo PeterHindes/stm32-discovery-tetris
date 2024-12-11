@@ -1,0 +1,6 @@
+../Core/Src/screens.c:18:6:shadingDemo	16	static
+../Core/Src/screens.c:23:6:showStartScreen	16	static
+../Core/Src/screens.c:48:6:startClicked	0	static
+../Core/Src/screens.c:52:6:uint32_to_string	0	static
+../Core/Src/screens.c:62:6:showGameScreen	824	static
+../Core/Src/screens.c:84:6:showEndScreen	24	static

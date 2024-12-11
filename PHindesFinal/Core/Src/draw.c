@@ -119,6 +119,27 @@ void Fill_Tetris_Board(Board *board, uint16_t startX, uint16_t startY)
             }
         }
     }
+
+//    // Draw grey squares around the board's borders
+//    uint16_t greyColor = 0x7BEF;
+//    for (uint16_t col = 0; col < BOARD_WIDTH + 2; col++) {
+//        uint16_t xPos = startX - BLOCK_SIZE + col * BLOCK_SIZE + col - 1;
+//
+//        // Top border
+//        Draw_Tetris_Block(xPos, startY - BLOCK_SIZE - 1, BLOCK_SIZE, greyColor, greyColor, greyColor);
+//
+//        // Bottom border
+//        Draw_Tetris_Block(xPos, startY + BOARD_HEIGHT * BLOCK_SIZE + BOARD_HEIGHT, BLOCK_SIZE, greyColor, greyColor, greyColor);
+//    }
+//    for (uint16_t row = 0; row < BOARD_HEIGHT; row++) {
+//        uint16_t yPos = startY + row * BLOCK_SIZE + row;
+//
+//        // Left border
+//        Draw_Tetris_Block(startX - BLOCK_SIZE - 1, yPos, BLOCK_SIZE, greyColor, greyColor, greyColor);
+//
+//        // Right border
+//        Draw_Tetris_Block(startX + BOARD_WIDTH * BLOCK_SIZE + BOARD_WIDTH, yPos, BLOCK_SIZE, greyColor, greyColor, greyColor);
+//    }
 }
 
 void DrawTetrominoByIndex(uint8_t pieceNumber, uint16_t startX, uint16_t startY)

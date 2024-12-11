@@ -15,30 +15,6 @@ void initializeBoard(Board *board) {
     }
 }
 
-void clearCompletedRows(Board *board) {
-    for (int i = 0; i < BOARD_HEIGHT; i++) {
-        int isComplete = 1;
-        for (int j = 0; j < BOARD_WIDTH; j++) {
-            if (board->grid[i][j] == 0) {
-                isComplete = 0;
-                break;
-            }
-        }
-
-        if (isComplete) {
-            for (int k = i; k > 0; k--) {
-                for (int j = 0; j < BOARD_WIDTH; j++) {
-                    board->grid[k][j] = board->grid[k - 1][j];
-                }
-            }
-
-            for (int j = 0; j < BOARD_WIDTH; j++) {
-                board->grid[0][j] = 0;
-            }
-        }
-    }
-}
-
 Board boardWithPiece(Board *board, Piece *piece) {
 	Board tempBoard;
 

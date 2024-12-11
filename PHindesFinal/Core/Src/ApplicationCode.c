@@ -10,7 +10,7 @@
 /* Static variables */
 
 
-extern void initialise_monitor_handles(void); 
+//extern void initialise_monitor_handles(void);
 
 #if COMPILE_TOUCH_FUNCTIONS == 1
 static STMPE811_TouchData StaticTouchData;
@@ -22,7 +22,7 @@ void LCDTouchScreenInterruptGPIOInit(void);
 
 void ApplicationInit(void)
 {
-	initialise_monitor_handles(); // Allows printf functionality
+//	initialise_monitor_handles(); // Allows printf functionality
     LTCD__Init();
     LTCD_Layer_Init(0);
     LCD_Clear(0,LCD_COLOR_WHITE);
@@ -140,17 +140,17 @@ void EXTI15_10_IRQHandler()
 	// Determine if it is pressed or unpressed
 	if(isTouchDetected) // Touch has been detected
 	{
-		printf("\nPressed");
 		// May need to do numerous retries?
 		DetermineTouchPosition(&StaticTouchData);
-		/* Touch valid */
-		printf("\nX: %03d\nY: %03d \n", StaticTouchData.x, StaticTouchData.y);
+//		printf("\nPressed\nX: %03d\nY: %03d \n", StaticTouchData.x, StaticTouchData.y);
+//		printf("Tim: %u", __HAL_TIM_GET_COUNTER(&htim2));
 
-		if (activeScreen == 0){
+		if (activeScreen == 0) {
 			if (startClicked(StaticTouchData.x, LCD_PIXEL_HEIGHT-StaticTouchData.y)){
 				LCD_SetTextColor(LCD_COLOR_WHITE);
 				LCD_SetFont(&Font16x24);
 				LCD_DisplayString(30,190, "Starting...");
+				printf("Starting...\n");
 //				HAL_Delay(200);
 				activeScreen = 1;
 				initGame();
@@ -158,8 +158,14 @@ void EXTI15_10_IRQHandler()
 				LCD_Clear(0, LCD_COLOR_BLACK);
 				showGameScreen();
 				Draw_Arrows_On_Screen(-1);
+
+//				HAL_TIM_Base_Start_IT(& htim2);
+//			    HAL_TIM_Base_Start(& htim5);
+			    startTimers();
+
+			    printf("Started Timers\n");
 			}
-		} else if (activeScreen == 1){
+		} else if (activeScreen == 1) {
 			LCD_Clear(0, LCD_COLOR_BLACK);
 
 			uint8_t activeArrow = Determine_Touch_Quadrant(StaticTouchData.x,LCD_PIXEL_HEIGHT-StaticTouchData.y , LCD_PIXEL_WIDTH, LCD_PIXEL_HEIGHT);
@@ -173,7 +179,7 @@ void EXTI15_10_IRQHandler()
 			showGameScreen();
 			Draw_Arrows_On_Screen(activeArrow);
 		}
-	}else{
+	} else {
 		/* Touch not pressed */
 		Draw_Arrows_On_Screen(-1);
 	}

@@ -1,8 +1,9 @@
-../Core/Src/game.c:14:6:initGame	1
-../Core/Src/game.c:23:6:movePieceDown	2
-../Core/Src/game.c:32:6:lockPiece	8
-../Core/Src/game.c:48:6:collision	9
-../Core/Src/game.c:68:6:rotatePiece	5
-../Core/Src/game.c:86:6:dropPiece	2
-../Core/Src/game.c:92:6:handleInput	12
-../Core/Src/game.c:128:6:isGameOver	3
+../Core/Src/game.c:15:6:initGame	1
+../Core/Src/game.c:22:6:movePieceDown	2
+../Core/Src/game.c:31:6:dropPiece	2
+../Core/Src/game.c:36:6:lockPiece	14
+../Core/Src/game.c:70:10:clearCompletedRows	8
+../Core/Src/game.c:97:6:collision	9
+../Core/Src/game.c:117:6:rotatePiece	5
+../Core/Src/game.c:135:6:handleInput	11
+../Core/Src/game.c:169:6:isGameOver	3

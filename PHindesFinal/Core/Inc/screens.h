@@ -8,6 +8,7 @@
 #ifndef INC_SCREENS_H_
 #define INC_SCREENS_H_
 
+#include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
 #include "LCD_Driver.h"

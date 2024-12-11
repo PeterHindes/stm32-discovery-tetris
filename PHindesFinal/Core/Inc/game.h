@@ -16,6 +16,7 @@
 extern Board board;
 extern Piece currentPiece;
 extern Piece nextPiece;
+extern uint32_t pointsScored;
 
 void initGame();
 bool movePieceDown(Board *board, Piece *piece);
@@ -25,6 +26,7 @@ void handleInput(Board *board, Piece *piece, uint8_t command);
 bool isGameOver(Board *board);
 void rotatePiece(Piece *piece);
 void dropPiece(Board *board, Piece *piece);
+uint16_t clearCompletedRows(Board *board);
 
 
 #endif /* INC_GAME_H_ */
