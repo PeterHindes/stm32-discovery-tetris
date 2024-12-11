@@ -10,6 +10,7 @@
 
 #include "gameBoard.h"
 #include "pieces.h"
+#include "screens.h"
 #include <stdbool.h>
 #include <string.h>
 

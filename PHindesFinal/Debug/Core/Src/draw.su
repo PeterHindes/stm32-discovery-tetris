@@ -4,7 +4,7 @@
 ../Core/Src/draw.c:53:6:Draw_Arrow_Right	32	static
 ../Core/Src/draw.c:70:6:Draw_Arrows_On_Screen	16	static
 ../Core/Src/draw.c:78:6:Draw_Tetris_Block	40	static
-../Core/Src/draw.c:104:6:Fill_Tetris_Board	48	static
-../Core/Src/draw.c:145:6:DrawTetrominoByIndex	48	static
-../Core/Src/draw.c:164:6:DrawTetromino	48	static
-../Core/Src/draw.c:184:6:LCD_Draw_Rounded_Rectangle_Fill	32	static
+../Core/Src/draw.c:104:6:Fill_Tetris_Board	64	static
+../Core/Src/draw.c:147:6:DrawTetrominoByIndex	48	static
+../Core/Src/draw.c:166:6:DrawTetromino	48	static
+../Core/Src/draw.c:186:6:LCD_Draw_Rounded_Rectangle_Fill	32	static

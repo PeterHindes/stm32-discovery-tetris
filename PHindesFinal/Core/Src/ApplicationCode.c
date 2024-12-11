@@ -175,13 +175,18 @@ void EXTI15_10_IRQHandler()
 //			initializeRandomPiece( & nextPiece);
 
 			handleInput(& board, & currentPiece, activeArrow);
+			if (activeArrow == 2){
+				__HAL_TIM_SET_COUNTER(&htim2, 0);
+			}
 
 			showGameScreen();
 			Draw_Arrows_On_Screen(activeArrow);
 		}
 	} else {
 		/* Touch not pressed */
-		Draw_Arrows_On_Screen(-1);
+		if (activeScreen == 1) {
+			Draw_Arrows_On_Screen(-1);
+		}
 	}
 
 	STMPE811_Write(STMPE811_FIFO_STA, 0x01);

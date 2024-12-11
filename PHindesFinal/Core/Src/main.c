@@ -64,9 +64,9 @@ static void MX_GPIO_Init(void);
 static void MX_I2C3_Init(void);
 static void MX_LTDC_Init(void);
 static void MX_RNG_Init(void);
-static void MX_SPI5_Init(void);
 static void MX_TIM5_Init(void);
 static void MX_TIM2_Init(void);
+static void MX_SPI5_Init(void);
 /* USER CODE BEGIN PFP */
 void SystemClock_Config(void);
 void SystemClockOverride(void);
@@ -85,7 +85,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-//  initialise_monitor_handles();
+  initialise_monitor_handles();
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -112,9 +112,9 @@ int main(void)
   MX_I2C3_Init();
   MX_LTDC_Init();
   MX_RNG_Init();
-  MX_SPI5_Init();
   MX_TIM5_Init();
   MX_TIM2_Init();
+  MX_SPI5_Init();
   /* USER CODE BEGIN 2 */
 #endif
   MX_GPIO_Init();
@@ -199,7 +199,7 @@ void SystemClock_Config(void)
   * @param None
   * @retval None
   */
-static void MX_I2C3_Init(void)
+__attribute__((unused)) static void MX_I2C3_Init(void)
 {
 
   /* USER CODE BEGIN I2C3_Init 0 */
@@ -247,7 +247,7 @@ static void MX_I2C3_Init(void)
   * @param None
   * @retval None
   */
-static void MX_LTDC_Init(void)
+__attribute__((unused)) static void MX_LTDC_Init(void)
 {
 
   /* USER CODE BEGIN LTDC_Init 0 */
@@ -354,11 +354,10 @@ static void MX_RNG_Init(void)
   * @param None
   * @retval None
   */
-static void MX_SPI5_Init(void)
+__attribute__((unused)) static void MX_SPI5_Init(void)
 {
 
   /* USER CODE BEGIN SPI5_Init 0 */
-
   /* USER CODE END SPI5_Init 0 */
 
   /* USER CODE BEGIN SPI5_Init 1 */
@@ -686,7 +685,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	static volatile uint32_t last;
 	uint32_t current = __HAL_TIM_GET_COUNTER(&htim5);
 	HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_13);
-	printf("Pushed after %u\n", (current - last)/5000);
+	printf("Pushed after %u\n", (unsigned int) (current - last)/5000);
 	last = current;
 }
 /* USER CODE END 4 */

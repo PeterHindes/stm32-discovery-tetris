@@ -56,7 +56,7 @@ void uint32_to_string(uint32_t value, char *buffer, size_t buffer_size) {
         return;
     }
     // Format the uint32_t value as a string and store it in the buffer
-    snprintf(buffer, buffer_size, "%u", value);
+    snprintf(buffer, buffer_size, "%u", (unsigned int) value);
 }
 
 void showGameScreen(){
@@ -65,7 +65,7 @@ void showGameScreen(){
 	Fill_Tetris_Board(
 			& shownBoard,
 			LCD_PIXEL_WIDTH /2 - BOARD_WIDTH*(BLOCK_SIZE + 1)/2 ,
-			12
+			BLOCK_SIZE + 10
 			);
 
 	// Next Piece
@@ -77,17 +77,28 @@ void showGameScreen(){
 //	LCD_DisplayString(10,100,randNumStr);
 
 	char scoreStr[11];
-	uint32_to_string(pointsScored,&scoreStr,11);
+	uint32_to_string(pointsScored,(char *)&scoreStr,11);
 	LCD_DisplayString(10,10,scoreStr);
 }
 
 void showEndScreen(){
-	LCD_Clear(0,LCD_COLOR_MAGENTA);
+	LCD_Clear(0,0x2800); // DARK RED
 	char scoreStr[11];
-	uint32_to_string(pointsScored,&scoreStr,11);
+	uint32_to_string(pointsScored,(char *)&scoreStr,11);
 	LCD_DisplayString(10,10,scoreStr);
 
-	uint32_t timeLasted = __HAL_TIM_GET_COUNTER(&htim5);
-	uint32_to_string(timeLasted,&scoreStr,11);
-	LCD_DisplayString(10,40,scoreStr);
+	uint32_t timeLasted = __HAL_TIM_GET_COUNTER(&htim5)/5000;
+	uint32_t timeLastedSec = timeLasted % 60;
+	uint32_t timeLastedMin = timeLasted / 60;
+	uint32_t timeLastedHour = (timeLasted / 60) / 60;
+
+	uint32_to_string(timeLastedHour, (char *)&scoreStr,11);
+	LCD_DisplayString(25,40,scoreStr);
+	LCD_DisplayChar(40,40,'H');
+	uint32_to_string(timeLastedMin, (char *)&scoreStr,11);
+	LCD_DisplayString(40,70,scoreStr);
+	LCD_DisplayChar(10,70,'M');
+	uint32_to_string(timeLastedSec, (char *)&scoreStr,11);
+	LCD_DisplayString(40,100,scoreStr);
+	LCD_DisplayChar(10,100,'S');
 }

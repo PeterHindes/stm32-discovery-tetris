@@ -2,4 +2,4 @@
 ../Core/Src/ApplicationCode.c:62:9:Determine_Touch_Quadrant	2
 ../Core/Src/ApplicationCode.c:90:6:LCDTouchScreenInterruptGPIOInit	1
 ../Core/Src/ApplicationCode.c:23:6:ApplicationInit	1
-../Core/Src/ApplicationCode.c:114:6:EXTI15_10_IRQHandler	6
+../Core/Src/ApplicationCode.c:114:6:EXTI15_10_IRQHandler	7
