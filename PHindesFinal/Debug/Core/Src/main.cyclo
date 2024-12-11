@@ -10,4 +10,4 @@
 ../Core/Src/main.c:661:6:startTimers	1
 ../Core/Src/main.c:666:6:HAL_TIM_PeriodElapsedCallback	3
 ../Core/Src/main.c:683:6:HAL_GPIO_EXTI_Callback	1
-../Core/Src/main.c:697:6:Error_Handler	1
+../Core/Src/main.c:702:6:Error_Handler	1

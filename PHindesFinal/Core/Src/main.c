@@ -682,6 +682,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 }
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
+	handleInput(&board,&currentPiece,0);
+	LCD_Clear(0,LCD_COLOR_BLACK);
+	showGameScreen();
+	Draw_Arrows_On_Screen(-1);
+
 	HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_13);
 	static volatile uint32_t last;
 	uint32_t current = __HAL_TIM_GET_COUNTER(&htim5);

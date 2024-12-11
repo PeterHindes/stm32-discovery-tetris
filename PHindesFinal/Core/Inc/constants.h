@@ -12,6 +12,6 @@
 #define BOARD_HEIGHT 20
 #define BOARD_WIDTH 10
 #define BLOCK_SIZE 12
-#define BLOCK_FALL_TIME 1 // second
+#define BLOCK_FALL_TIME 3 // second
 
 #endif /* INC_CONSTANTS_H_ */
