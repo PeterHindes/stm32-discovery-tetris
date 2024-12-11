@@ -3,4 +3,4 @@
 ../Core/Src/screens.c:48:6:startClicked	16	static
 ../Core/Src/screens.c:52:6:uint32_to_string	24	static
 ../Core/Src/screens.c:62:6:showGameScreen	824	static
-../Core/Src/screens.c:84:6:showEndScreen	40	static
+../Core/Src/screens.c:83:6:showEndScreen	40	static

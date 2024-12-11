@@ -44,6 +44,8 @@ extern "C" {
 extern RNG_HandleTypeDef hrng;
 extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim5;
+
+extern volatile uint8_t tim2CallCounter;
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/

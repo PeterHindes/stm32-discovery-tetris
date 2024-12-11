@@ -3,4 +3,4 @@
 ../Core/Src/screens.c:48:6:startClicked	5
 ../Core/Src/screens.c:52:6:uint32_to_string	2
 ../Core/Src/screens.c:62:6:showGameScreen	1
-../Core/Src/screens.c:84:6:showEndScreen	1
+../Core/Src/screens.c:83:6:showEndScreen	1

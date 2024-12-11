@@ -60,6 +60,9 @@ void uint32_to_string(uint32_t value, char *buffer, size_t buffer_size) {
 }
 
 void showGameScreen(){
+	LCD_SetFont(&Font16x24);
+	LCD_SetTextColor(LCD_COLOR_WHITE);
+
 	// Game Board
 	Board shownBoard = boardWithPiece(& board, & currentPiece);
 	Fill_Tetris_Board(
@@ -71,30 +74,31 @@ void showGameScreen(){
 	// Next Piece
 	DrawTetromino(& nextPiece, 190, 10);
 
-//	// Test
-//	char randNumStr[11];
-//	uint32_to_string(rand(),& randNumStr,11);
-//	LCD_DisplayString(10,100,randNumStr);
-
+	// Score
 	char scoreStr[11];
 	uint32_to_string(pointsScored,(char *)&scoreStr,11);
 	LCD_DisplayString(10,10,scoreStr);
 }
 
 void showEndScreen(){
+	LCD_SetFont(&Font16x24);
+	LCD_SetTextColor(LCD_COLOR_WHITE);
+
 	LCD_Clear(0,0x2800); // DARK RED
 	char scoreStr[11];
 	uint32_to_string(pointsScored,(char *)&scoreStr,11);
-	LCD_DisplayString(10,10,scoreStr);
+	LCD_DisplayString(10,200,scoreStr);
+	LCD_DisplayString(10,170,"You Scored:");
 
+	LCD_DisplayString(10,10,"You Lasted:");
 	uint32_t timeLasted = __HAL_TIM_GET_COUNTER(&htim5)/5000;
 	uint32_t timeLastedSec = timeLasted % 60;
 	uint32_t timeLastedMin = timeLasted / 60;
 	uint32_t timeLastedHour = (timeLasted / 60) / 60;
 
 	uint32_to_string(timeLastedHour, (char *)&scoreStr,11);
-	LCD_DisplayString(25,40,scoreStr);
-	LCD_DisplayChar(40,40,'H');
+	LCD_DisplayString(40,40,scoreStr);
+	LCD_DisplayChar(10,40,'H');
 	uint32_to_string(timeLastedMin, (char *)&scoreStr,11);
 	LCD_DisplayString(40,70,scoreStr);
 	LCD_DisplayChar(10,70,'M');

@@ -174,10 +174,16 @@ void EXTI15_10_IRQHandler()
 //			currentPiece = nextPiece;
 //			initializeRandomPiece( & nextPiece);
 
-			handleInput(& board, & currentPiece, activeArrow);
 			if (activeArrow == 2){
-				__HAL_TIM_SET_COUNTER(&htim2, 0);
+				if (tim2CallCounter >= 3){
+					tim2CallCounter = 0;
+					__HAL_TIM_SET_COUNTER(&htim2, 0);
+				} else {
+					activeArrow = -1;
+				}
+
 			}
+			handleInput(& board, & currentPiece, activeArrow);
 
 			showGameScreen();
 			Draw_Arrows_On_Screen(activeArrow);
