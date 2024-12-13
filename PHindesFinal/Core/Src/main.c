@@ -85,7 +85,9 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
+#if USEDEBUG == 1
   initialise_monitor_handles();
+#endif
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -670,7 +672,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 //		printf("Counter: %u\n", tim2CallCounter);
 //		printf("1/10 of a second\n");
 		if (tim2CallCounter >= 10 * BLOCK_FALL_TIME){
-			printf("1 second\n");
+#if USEDEBUG == 1
+			printf("3 seconds\n");
+#endif
 			HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_14);
 			movePieceDown(& board,& currentPiece);
 			LCD_Clear(0,LCD_COLOR_BLACK);
@@ -682,7 +686,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 }
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-	handleInput(&board,&currentPiece,0);
+	handleInput(&board,&currentPiece, BUTTONACTION);
 	LCD_Clear(0,LCD_COLOR_BLACK);
 	showGameScreen();
 	Draw_Arrows_On_Screen(-1);

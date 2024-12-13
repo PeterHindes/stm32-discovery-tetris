@@ -49,11 +49,15 @@ void LCD_Touch_Polling_Demo(void)
 		/* If touch pressed */
 		if (returnTouchStateAndLocation(&StaticTouchData) == STMPE811_State_Pressed) {
 			/* Touch valid */
+#if USEDEBUG == 1
 			printf("\nX: %03d\nY: %03d\n", StaticTouchData.x, StaticTouchData.y);
+#endif
 			LCD_Clear(0, LCD_COLOR_RED);
 		} else {
 			/* Touch not pressed */
+#if USEDEBUG == 1
 			printf("Not Pressed\n\n");
+#endif
 			LCD_Clear(0, LCD_COLOR_GREEN);
 		}
 	}
@@ -150,7 +154,9 @@ void EXTI15_10_IRQHandler()
 				LCD_SetTextColor(LCD_COLOR_WHITE);
 				LCD_SetFont(&Font16x24);
 				LCD_DisplayString(30,190, "Starting...");
+#if USEDEBUG == 1
 				printf("Starting...\n");
+#endif
 //				HAL_Delay(200);
 				activeScreen = 1;
 				initGame();
@@ -162,8 +168,9 @@ void EXTI15_10_IRQHandler()
 //				HAL_TIM_Base_Start_IT(& htim2);
 //			    HAL_TIM_Base_Start(& htim5);
 			    startTimers();
-
+#if USEDEBUG == 1
 			    printf("Started Timers\n");
+#endif
 			}
 		} else if (activeScreen == 1) {
 			LCD_Clear(0, LCD_COLOR_BLACK);
