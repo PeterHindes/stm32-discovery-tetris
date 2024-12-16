@@ -1,2 +1,0 @@
-#define BOARD_HEIGHT 20
-#define BOARD_WIDTH 10
