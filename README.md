@@ -7,4 +7,4 @@ The project should be good to go if you just compile and upload it directly to t
 
 If you want to see the code check [this folder](PHindesFinal/Core).
 
-<img src="demo.jpg" width="300px" />
+<img src="demo.jpg" width="700px" />
